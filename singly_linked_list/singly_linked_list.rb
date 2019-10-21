@@ -1,22 +1,4 @@
-## singly-linked list implemented in Ruby
-
-class Node
-    attr_reader :data 
-    attr_accessor :next 
-
-    def initialize(data)
-        @data = data 
-        @next = nil
-    end
-
-    def to_s
-        "data: #{@data}"
-    end
-end
-
-
-
-class LinkedList
+class SinglyLinkedList
     def initialize
         @head = nil
         @count = 0
@@ -72,7 +54,7 @@ class LinkedList
             node = node.next 
             i += 1
         end
-        node.data
+        node
     end
 
     def pop
@@ -125,28 +107,17 @@ class LinkedList
         output
     end
 
-    def insert_at(idx)
-        #inserts note at given index
+    def insert_at(idx,value)
+        newnode = Node.new(value)
+        newnode.next = self.at(idx)
+        self.at(idx-1).next = newnode
+        @count += 1
     end
     
     def remove_at(idx)
-        #removes node at given index
+        new_next = self.at(idx).next 
+        self.at(idx-1).next = new_next
+        @count -= 1
     end
 
 end
-
-
-my_list = LinkedList.new
-
-my_list.append(100)
-my_list.append(50)
-my_list.prepend("last")
-my_list.prepend("real tail")
-my_list.append(1400)
-
-p my_list.contains?(101)
-p my_list.contains?(100)
-p my_list.find(1400)
-
-
-puts my_list
