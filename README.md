@@ -1,2 +1,3 @@
-# algorithm_practice
-repository containing sorts and other algorithms created for practice.
+# Ruby practice
+repository containing sorts and other algorithms created for practice with Ruby.
+
